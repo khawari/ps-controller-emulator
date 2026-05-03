@@ -10,16 +10,23 @@ public static class DeviceServiceFactory
         return CreateDefault(enableMockFallback: true);
     }
 
-    public static IControllerDiscoveryService CreateForCli(bool useMock)
+    public static IControllerDiscoveryService CreateForCli(bool useMock, IHidDeviceScanner? scanner = null)
     {
-        return useMock ? new MockControllerDiscoveryService() : CreateDefault(enableMockFallback: false);
+        return useMock ? new MockControllerDiscoveryService() : CreateDefault(enableMockFallback: false, scanner);
     }
 
-    public static IControllerDiscoveryService CreateDefault(bool enableMockFallback)
+    public static IControllerDiscoveryService CreateDefault(bool enableMockFallback, IHidDeviceScanner? scanner = null)
     {
         return new ControllerDiscoveryService(
-            new HardwareControllerDiscoveryService(new NullHidDeviceScanner()),
+            new HardwareControllerDiscoveryService(scanner ?? CreateHidDeviceScanner()),
             new MockControllerDiscoveryService(),
             enableMockFallback);
+    }
+
+    private static IHidDeviceScanner CreateHidDeviceScanner()
+    {
+        return OperatingSystem.IsWindows()
+            ? new WindowsHidDeviceScanner()
+            : new NullHidDeviceScanner();
     }
 }
