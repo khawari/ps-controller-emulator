@@ -124,10 +124,14 @@ public sealed class WindowsHidDeviceScanner : IHidDeviceScanner
     {
         deviceInfo = default!;
 
-        if (!HidTransportClassifier.IsUsbDevicePath(devicePath))
+        var connectionType = HidTransportClassifier.ClassifyConnectionType(devicePath);
+
+        if (connectionType == ConnectionType.Unknown)
         {
             return false;
         }
+
+        var hasPathIds = HidTransportClassifier.TryExtractVendorProductId(devicePath, out var pathVendorId, out var pathProductId);
 
         using var handle = CreateFile(
             devicePath,
@@ -140,23 +144,39 @@ public sealed class WindowsHidDeviceScanner : IHidDeviceScanner
 
         if (handle.IsInvalid)
         {
-            return false;
+            if (!hasPathIds)
+            {
+                return false;
+            }
+
+            deviceInfo = new HidDeviceInfo(
+                devicePath,
+                pathVendorId,
+                pathProductId,
+                string.Empty,
+                string.Empty,
+                connectionType);
+
+            return true;
         }
 
         var attributes = HIDD_ATTRIBUTES.Create();
+        var hasAttributes = HidD_GetAttributes(handle, ref attributes);
+        var vendorId = hasAttributes ? attributes.VendorID : pathVendorId;
+        var productId = hasAttributes ? attributes.ProductID : pathProductId;
 
-        if (!HidD_GetAttributes(handle, ref attributes))
+        if (vendorId == 0 || productId == 0)
         {
             return false;
         }
 
         deviceInfo = new HidDeviceInfo(
             devicePath,
-            attributes.VendorID,
-            attributes.ProductID,
+            vendorId,
+            productId,
             ReadHidString(handle, HidStringKind.Product),
             ReadHidString(handle, HidStringKind.Manufacturer),
-            ConnectionType.Usb);
+            connectionType);
 
         return true;
     }

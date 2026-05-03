@@ -122,16 +122,47 @@ public sealed class MockDiscoveryTests
     {
         var path = @"\\?\hid#vid_054c&pid_0ce6&mi_03#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}";
 
-        Assert.True(HidTransportClassifier.IsUsbDevicePath(path));
+        Assert.Equal(ConnectionType.Usb, HidTransportClassifier.ClassifyConnectionType(path));
+    }
+
+    [Fact]
+    public void BluetoothLookingHidPathIsClassifiedAsBluetooth()
+    {
+        var path = @"\\?\hid#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}";
+
+        Assert.Equal(ConnectionType.Bluetooth, HidTransportClassifier.ClassifyConnectionType(path));
+    }
+
+    [Fact]
+    public void UsbPathVendorProductIdIsExtracted()
+    {
+        var path = @"\\?\hid#vid_054c&pid_09cc&mi_03#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}";
+
+        var parsed = HidTransportClassifier.TryExtractVendorProductId(path, out var vendorId, out var productId);
+
+        Assert.True(parsed);
+        Assert.Equal(PlayStationControllerDetector.SonyVendorId, vendorId);
+        Assert.Equal(PlayStationControllerDetector.DualShock4SlimProductId, productId);
+    }
+
+    [Fact]
+    public void BluetoothPathVendorProductIdIsExtracted()
+    {
+        var path = @"\\?\bthenum#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0df2#8&2f2c7b6&0&0000";
+
+        var parsed = HidTransportClassifier.TryExtractVendorProductId(path, out var vendorId, out var productId);
+
+        Assert.True(parsed);
+        Assert.Equal(PlayStationControllerDetector.SonyVendorId, vendorId);
+        Assert.Equal(PlayStationControllerDetector.DualSenseEdgeProductId, productId);
     }
 
     [Theory]
-    [InlineData(@"\\?\hid#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}")]
-    [InlineData(@"\\?\bthenum#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000")]
     [InlineData(@"\\?\hid#sony_controller#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}")]
-    public void NonUsbOrAmbiguousHidPathIsRejected(string path)
+    [InlineData(@"\\?\hid#{11111111-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000")]
+    public void AmbiguousHidPathIsRejected(string path)
     {
-        Assert.False(HidTransportClassifier.IsUsbDevicePath(path));
+        Assert.Equal(ConnectionType.Unknown, HidTransportClassifier.ClassifyConnectionType(path));
     }
 
     private sealed class FakeHidDeviceScanner(IReadOnlyList<HidDeviceInfo> devices) : IHidDeviceScanner

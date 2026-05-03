@@ -6,7 +6,7 @@ PS Controller Emulator helps Windows 10/11 users inspect, configure, and eventua
 
 ## MVP Scope
 
-- USB-first discovery for DualSense, DualSense Edge, and DualShock 4 via read-only Windows HID enumeration.
+- USB-first discovery for DualSense, DualSense Edge, and DualShock 4 via read-only Windows HID enumeration, with Bluetooth discovery when Windows HID metadata is sufficient.
 - Desktop app that shows connected controller model, battery status when available, connection type, and current input state.
 - Mock controller mode so UI and CLI workflows can be tested without hardware.
 - CLI diagnostics for QA and issue reports.
@@ -28,6 +28,7 @@ PS Controller Emulator helps Windows 10/11 users inspect, configure, and eventua
 - Battery and feature availability differ across USB, Bluetooth, firmware versions, and controller models.
 - HID enumeration may be affected by Windows permissions, exclusive device access, or third-party drivers.
 - USB transport inference is conservative: ambiguous HID paths are skipped instead of being labeled USB.
+- Bluetooth discovery depends on Windows exposing recognizable HID metadata; some Bluetooth paths may remain unclassified.
 - Virtual controller backends may require drivers, elevated setup, or user consent.
 - Adaptive trigger and haptic behavior must be implemented conservatively and tested on real hardware.
 - Hardware compatibility data needs privacy review before collection or upload.
