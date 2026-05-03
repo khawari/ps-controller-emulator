@@ -10,15 +10,15 @@ This project is a clean-room implementation. It does not copy DSX code, assets, 
 
 ## Current MVP
 
-- Enumerates Windows USB HID devices and detects supported Sony PlayStation controllers by VID/PID: DualSense, DualSense Edge, and DualShock 4.
+- Enumerates Windows HID devices and detects supported Sony PlayStation controllers by VID/PID metadata for USB, and for Bluetooth where Windows exposes usable HID path metadata.
 - Falls back to a mock DualSense in the desktop app when no hardware is available.
 - Prints deterministic CLI diagnostics with `psce devices --mock`.
 - Defines core modules for remapping, lightbar color, rumble/haptics, adaptive trigger effects, and virtual controller targets.
 - Runs automated tests without controller hardware.
 
-Input report parsing, battery extraction from real hardware, Bluetooth discovery, and virtual gamepad emulation are future work.
+Input report parsing, battery extraction from real hardware, expanded Bluetooth metadata coverage, and virtual gamepad emulation are future work.
 
-USB transport is inferred conservatively from Windows HID device paths. Ambiguous HID devices and Bluetooth-looking paths are skipped rather than reported as USB.
+Transport is inferred conservatively from Windows HID device paths. Ambiguous HID devices are skipped rather than mislabeled.
 
 ## Architecture
 
@@ -73,7 +73,7 @@ dotnet test
 ## Roadmap
 
 1. Parse USB input reports and extract real battery status where available.
-2. Add Bluetooth discovery and pairing diagnostics.
+2. Expand Bluetooth discovery coverage and add pairing diagnostics.
 3. Integrate a user-selectable virtual gamepad backend for Xbox 360, DualShock 4, and DualSense targets.
 4. Add persisted remapping profiles and import/export.
 5. Expand hardware compatibility reporting with anonymized USB metadata.

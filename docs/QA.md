@@ -31,7 +31,7 @@
 
 ## With PlayStation Controller Hardware
 
-USB HID discovery is read-only. The scanner only reports devices with USB-looking Windows HID paths; ambiguous HID paths are skipped rather than labeled USB. Input parsing, battery extraction from real hardware, Bluetooth, and virtual emulation are future work.
+HID discovery is read-only. USB and Bluetooth transport are inferred conservatively from Windows HID paths; ambiguous paths are skipped rather than mislabeled. Input parsing, battery extraction from real hardware, and virtual emulation are future work.
 
 1. Connect one supported controller over USB:
    - DualSense
@@ -49,6 +49,21 @@ USB HID discovery is read-only. The scanner only reports devices with USB-lookin
 
 7. Confirm one entry appears for the connected controller with connection type `USB`.
 8. Record controller model, Windows version, connection type, product/manufacturer naming, and any incorrect status in a hardware compatibility report.
+
+## Bluetooth Manual Checks (Where Available)
+
+1. Pair one supported controller in Windows Bluetooth settings:
+   - DualSense
+   - DualSense Edge
+   - DualShock 4
+2. Run:
+
+   ```powershell
+   dotnet run --project src/PSControllerEmulator.Cli -- devices
+   ```
+
+3. Confirm the controller appears with connection type `Bluetooth` when path metadata is recognizable.
+4. If the device does not appear, capture the environment details and note that path metadata may be ambiguous/unclassified.
 
 ## Regression Checklist
 
