@@ -18,7 +18,7 @@ PS Controller Emulator helps Windows 10/11 users inspect, configure, and eventua
 
 - Copying DSX code, assets, branding, UI, text, or proprietary behavior.
 - Shipping kernel drivers in the initial skeleton.
-- Bluetooth discovery in the first deliverable.
+- Comprehensive Bluetooth support across all Windows stack variants in the first deliverable.
 - Production-ready Xbox 360, DS4, or DualSense emulation in the first deliverable.
 - Firmware modification or unsupported controller flashing.
 
