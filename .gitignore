@@ -1,0 +1,22 @@
+# Build output
+bin/
+obj/
+TestResults/
+
+# Local tools and generated SDK bootstrap files
+.tools/
+
+# IDE and user files
+.vs/
+.vscode/
+*.user
+*.suo
+*.rsuser
+
+# NuGet
+*.nupkg
+packages/
+
+# OS files
+Thumbs.db
+Desktop.ini

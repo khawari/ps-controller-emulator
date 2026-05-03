@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{834F3F3E-EEF6-4315-B21F-3A407E53FE44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.Core", "src\PSControllerEmulator.Core\PSControllerEmulator.Core.csproj", "{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.Devices", "src\PSControllerEmulator.Devices\PSControllerEmulator.Devices.csproj", "{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.VirtualGamepad", "src\PSControllerEmulator.VirtualGamepad\PSControllerEmulator.VirtualGamepad.csproj", "{FE156BDC-B42D-4BB5-82C2-A819441C9816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.Cli", "src\PSControllerEmulator.Cli\PSControllerEmulator.Cli.csproj", "{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.App", "src\PSControllerEmulator.App\PSControllerEmulator.App.csproj", "{CBB7C433-DCCF-4959-9091-63D3C5105D4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6DA974B-EEF7-401E-A3E7-46E8D76A37C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSControllerEmulator.Tests", "tests\PSControllerEmulator.Tests\PSControllerEmulator.Tests.csproj", "{B18E0A44-CD43-4883-B218-5041C63F50B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE156BDC-B42D-4BB5-82C2-A819441C9816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE156BDC-B42D-4BB5-82C2-A819441C9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE156BDC-B42D-4BB5-82C2-A819441C9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE156BDC-B42D-4BB5-82C2-A819441C9816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB7C433-DCCF-4959-9091-63D3C5105D4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB7C433-DCCF-4959-9091-63D3C5105D4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB7C433-DCCF-4959-9091-63D3C5105D4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB7C433-DCCF-4959-9091-63D3C5105D4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18E0A44-CD43-4883-B218-5041C63F50B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18E0A44-CD43-4883-B218-5041C63F50B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18E0A44-CD43-4883-B218-5041C63F50B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18E0A44-CD43-4883-B218-5041C63F50B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F0B45E7-41A7-4FCA-9712-68BE2E8DD730} = {834F3F3E-EEF6-4315-B21F-3A407E53FE44}
+		{0BFB6599-0EE6-4538-B3E4-22D5652D8FBE} = {834F3F3E-EEF6-4315-B21F-3A407E53FE44}
+		{FE156BDC-B42D-4BB5-82C2-A819441C9816} = {834F3F3E-EEF6-4315-B21F-3A407E53FE44}
+		{D1D227C6-9777-47DF-8DB0-46D7A2C1BFFD} = {834F3F3E-EEF6-4315-B21F-3A407E53FE44}
+		{CBB7C433-DCCF-4959-9091-63D3C5105D4C} = {834F3F3E-EEF6-4315-B21F-3A407E53FE44}
+		{B18E0A44-CD43-4883-B218-5041C63F50B2} = {E6DA974B-EEF7-401E-A3E7-46E8D76A37C7}
+	EndGlobalSection
+EndGlobal

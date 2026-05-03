@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\PSControllerEmulator.Core\PSControllerEmulator.Core.csproj" />
+    <ProjectReference Include="..\PSControllerEmulator.Devices\PSControllerEmulator.Devices.csproj" />
+    <ProjectReference Include="..\PSControllerEmulator.VirtualGamepad\PSControllerEmulator.VirtualGamepad.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>psce</AssemblyName>
+    <RootNamespace>PSControllerEmulator.Cli</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,55 @@
+# PS Controller Emulator QA
+
+## Without Controller Hardware
+
+1. Build the solution:
+
+   ```powershell
+   dotnet build
+   ```
+
+2. Run tests:
+
+   ```powershell
+   dotnet test
+   ```
+
+3. Run CLI mock diagnostics:
+
+   ```powershell
+   dotnet run --project src/PSControllerEmulator.Cli -- devices --mock
+   ```
+
+4. Confirm output contains one mock DualSense with connection, battery, and neutral input state.
+5. Launch the desktop app:
+
+   ```powershell
+   dotnet run --project src/PSControllerEmulator.App
+   ```
+
+6. Confirm the app opens and shows the mock DualSense fallback.
+
+## With PlayStation Controller Hardware
+
+1. Connect one supported controller over USB:
+   - DualSense
+   - DualSense Edge
+   - DualShock 4
+2. Build and run tests.
+3. Launch the app and press Refresh.
+4. Confirm the controller model and USB connection type are shown.
+5. Confirm missing battery data is displayed as unavailable instead of an error.
+6. Run CLI diagnostics:
+
+   ```powershell
+   dotnet run --project src/PSControllerEmulator.Cli -- devices
+   ```
+
+7. Record controller model, Windows version, connection type, and any incorrect status in a hardware compatibility report.
+
+## Regression Checklist
+
+- The app does not crash when zero controllers are connected.
+- `psce devices --mock` prints exactly one mock DualSense.
+- Hardware-facing code remains behind interfaces that tests can replace.
+- Clean-room notice remains present in README and PRD.

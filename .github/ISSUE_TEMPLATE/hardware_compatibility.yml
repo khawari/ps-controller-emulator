@@ -1,0 +1,49 @@
+name: Hardware compatibility report
+description: Report controller behavior on a specific Windows setup.
+title: "[Hardware]: "
+labels:
+  - hardware
+body:
+  - type: dropdown
+    id: model
+    attributes:
+      label: Controller model
+      options:
+        - DualSense
+        - DualSense Edge
+        - DualShock 4
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: connection
+    attributes:
+      label: Connection type
+      options:
+        - USB
+        - Bluetooth
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 10 22H2
+    validations:
+      required: true
+  - type: textarea
+    id: cli
+    attributes:
+      label: CLI output
+      description: Paste `psce devices` output if available.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Include battery, input, rumble, lightbar, or trigger observations.
+    validations:
+      required: false

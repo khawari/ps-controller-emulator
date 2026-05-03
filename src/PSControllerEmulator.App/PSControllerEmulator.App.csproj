@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\PSControllerEmulator.Core\PSControllerEmulator.Core.csproj" />
+    <ProjectReference Include="..\PSControllerEmulator.Devices\PSControllerEmulator.Devices.csproj" />
+    <ProjectReference Include="..\PSControllerEmulator.VirtualGamepad\PSControllerEmulator.VirtualGamepad.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+</Project>
