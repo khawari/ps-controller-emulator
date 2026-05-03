@@ -31,6 +31,8 @@
 
 ## With PlayStation Controller Hardware
 
+Real USB HID scanning is not implemented in the initial skeleton. Use this section after `IHidDeviceScanner` has a Windows HID implementation.
+
 1. Connect one supported controller over USB:
    - DualSense
    - DualSense Edge
