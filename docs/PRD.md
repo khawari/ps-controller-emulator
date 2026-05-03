@@ -6,7 +6,7 @@ PS Controller Emulator helps Windows 10/11 users inspect, configure, and eventua
 
 ## MVP Scope
 
-- USB-first discovery for DualSense, DualSense Edge, and DualShock 4 identifiers.
+- USB-first discovery architecture for DualSense, DualSense Edge, and DualShock 4 identifiers, with the real Windows HID scanner tracked as follow-up work.
 - Desktop app that shows connected controller model, battery status when available, connection type, and current input state.
 - Mock controller mode so UI and CLI workflows can be tested without hardware.
 - CLI diagnostics for QA and issue reports.

@@ -10,7 +10,7 @@ This project is a clean-room implementation. It does not copy DSX code, assets, 
 
 ## Current MVP
 
-- Detects known Sony USB HID identifiers for DualSense, DualSense Edge, and DualShock 4 through a mockable device scanner boundary.
+- Defines known Sony USB HID identifiers for DualSense, DualSense Edge, and DualShock 4 behind a mockable device scanner boundary. Real Windows HID scanning is planned next.
 - Falls back to a mock DualSense in the desktop app when no hardware is available.
 - Prints deterministic CLI diagnostics with `psce devices --mock`.
 - Defines core modules for remapping, lightbar color, rumble/haptics, adaptive trigger effects, and virtual controller targets.
