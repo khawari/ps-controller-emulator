@@ -31,7 +31,7 @@
 
 ## With PlayStation Controller Hardware
 
-USB HID discovery is read-only. Input parsing, battery extraction from real hardware, Bluetooth, and virtual emulation are future work.
+USB HID discovery is read-only. The scanner only reports devices with USB-looking Windows HID paths; ambiguous HID paths are skipped rather than labeled USB. Input parsing, battery extraction from real hardware, Bluetooth, and virtual emulation are future work.
 
 1. Connect one supported controller over USB:
    - DualSense

@@ -124,6 +124,11 @@ public sealed class WindowsHidDeviceScanner : IHidDeviceScanner
     {
         deviceInfo = default!;
 
+        if (!HidTransportClassifier.IsUsbDevicePath(devicePath))
+        {
+            return false;
+        }
+
         using var handle = CreateFile(
             devicePath,
             MetadataOnlyAccess,

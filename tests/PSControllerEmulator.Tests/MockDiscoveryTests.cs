@@ -117,6 +117,23 @@ public sealed class MockDiscoveryTests
         Assert.Equal(ControllerModel.DualSense, controller.Model);
     }
 
+    [Fact]
+    public void UsbLookingHidPathIsAcceptedAsUsb()
+    {
+        var path = @"\\?\hid#vid_054c&pid_0ce6&mi_03#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}";
+
+        Assert.True(HidTransportClassifier.IsUsbDevicePath(path));
+    }
+
+    [Theory]
+    [InlineData(@"\\?\hid#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}")]
+    [InlineData(@"\\?\bthenum#{00001124-0000-1000-8000-00805f9b34fb}_vid&0002054c_pid&0ce6#8&2f2c7b6&0&0000")]
+    [InlineData(@"\\?\hid#sony_controller#8&2f2c7b6&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}")]
+    public void NonUsbOrAmbiguousHidPathIsRejected(string path)
+    {
+        Assert.False(HidTransportClassifier.IsUsbDevicePath(path));
+    }
+
     private sealed class FakeHidDeviceScanner(IReadOnlyList<HidDeviceInfo> devices) : IHidDeviceScanner
     {
         public Task<IReadOnlyList<HidDeviceInfo>> ScanAsync(CancellationToken cancellationToken = default)

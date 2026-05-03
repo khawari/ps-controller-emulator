@@ -18,6 +18,8 @@ This project is a clean-room implementation. It does not copy DSX code, assets, 
 
 Input report parsing, battery extraction from real hardware, Bluetooth discovery, and virtual gamepad emulation are future work.
 
+USB transport is inferred conservatively from Windows HID device paths. Ambiguous HID devices and Bluetooth-looking paths are skipped rather than reported as USB.
+
 ## Architecture
 
 ```text

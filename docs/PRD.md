@@ -27,6 +27,7 @@ PS Controller Emulator helps Windows 10/11 users inspect, configure, and eventua
 - Windows HID APIs require careful permission and hotplug handling.
 - Battery and feature availability differ across USB, Bluetooth, firmware versions, and controller models.
 - HID enumeration may be affected by Windows permissions, exclusive device access, or third-party drivers.
+- USB transport inference is conservative: ambiguous HID paths are skipped instead of being labeled USB.
 - Virtual controller backends may require drivers, elevated setup, or user consent.
 - Adaptive trigger and haptic behavior must be implemented conservatively and tested on real hardware.
 - Hardware compatibility data needs privacy review before collection or upload.
