@@ -31,7 +31,7 @@
 
 ## With PlayStation Controller Hardware
 
-Real USB HID scanning is not implemented in the initial skeleton. Use this section after `IHidDeviceScanner` has a Windows HID implementation.
+USB HID discovery is read-only. The scanner only reports devices with USB-looking Windows HID paths; ambiguous HID paths are skipped rather than labeled USB. Input parsing, battery extraction from real hardware, Bluetooth, and virtual emulation are future work.
 
 1. Connect one supported controller over USB:
    - DualSense
@@ -47,7 +47,8 @@ Real USB HID scanning is not implemented in the initial skeleton. Use this secti
    dotnet run --project src/PSControllerEmulator.Cli -- devices
    ```
 
-7. Record controller model, Windows version, connection type, and any incorrect status in a hardware compatibility report.
+7. Confirm one entry appears for the connected controller with connection type `USB`.
+8. Record controller model, Windows version, connection type, product/manufacturer naming, and any incorrect status in a hardware compatibility report.
 
 ## Regression Checklist
 

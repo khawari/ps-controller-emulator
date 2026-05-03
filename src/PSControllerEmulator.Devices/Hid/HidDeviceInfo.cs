@@ -7,4 +7,5 @@ public sealed record HidDeviceInfo(
     ushort VendorId,
     ushort ProductId,
     string ProductName,
+    string ManufacturerName,
     ConnectionType ConnectionType);
